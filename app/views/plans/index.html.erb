@@ -1,1 +1,9 @@
-<h1>plans index</h1>
+  
+<h1>Your Plans</h1>
+
+<% @plans.each do |plan|%>
+  <div>
+    <h3><%= link_to plan.title, plan_path(plan) %> </h3>
+    <p>About: <%= plan.description %> </p>
+  </div><br>
+<% end %>
