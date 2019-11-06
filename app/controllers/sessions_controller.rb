@@ -6,6 +6,19 @@ class SessionsController < ApplicationController
   end
 
   def create
+    #find user from db
+    # name="user[email]"
+    @user = User.find_by(email: params[:user][:email])
+
+    #if we find user by email and they have the right password
+    if @user && @user.authenticate(params[:user][:password])
+      #log the user in, remember user from one page to another
+      session[:user_id] = @user_id
+      redirect_to user_path(@user)
+    else
+      flash[:message] = "Sorry, please try again."
+      redirect_to login_path
+    end
   end
 
   def destroy
