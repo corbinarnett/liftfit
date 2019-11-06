@@ -11,7 +11,11 @@
 
   <body>
   
+      
       <%= link_to 'Logout', '/logout', method: :delete%>
+      <%= link_to 'My Plans', plans_path %>
+      <%= link_to 'Create a Plan', new_plan_path %>
+    
   
     <%= yield %>
   </body>
