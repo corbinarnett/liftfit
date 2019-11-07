@@ -1,0 +1,31 @@
+<%= form_for :exercises do |f| %>
+    <div>
+    <fieldset>
+    <legend>Exercise</legend>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    
+    <%= f.label :muscle_group %>
+    <%= f.select :muscle_group, options_for_select(%w[abdominals abductors biceps calves chest forearms glutes hamstrings lats lowerback middleback neck quadriceps shoulder traps triceps]), include_blank: true %><br>
+
+    <%= f.label :equipment %>
+    <%= f.text_field :equipment %><br>
+
+    <%= f.label :sets %>
+    <%= f.number_field :sets, min: 1 %><br>
+
+    <%= f.label :weight %>
+    <%= f.number_field :weight, min: 0 %><br>
+
+    <%= f.label :reps %>
+    <%= f.text_field :reps %>
+    <br><br>
+
+    <%= f.submit "Add Exercise" %>
+    </fieldset>
+    
+    </div>
+
+    
+
+  <% end %>
