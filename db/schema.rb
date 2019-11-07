@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_015052) do
+ActiveRecord::Schema.define(version: 2019_11_07_015257) do
+
+  create_table "exercises", force: :cascade do |t|
+    t.text "name"
+    t.text "muscle_group"
+    t.text "equipment"
+    t.integer "sets"
+    t.integer "weight"
+    t.integer "reps"
+    t.integer "workout_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["workout_id"], name: "index_exercises_on_workout_id"
+  end
 
   create_table "plans", force: :cascade do |t|
     t.string "title"
@@ -49,12 +62,10 @@ ActiveRecord::Schema.define(version: 2019_11_07_015052) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"
-    t.integer "sets_per_exercise"
-    t.integer "rep_range"
-    t.integer "rest_time_between_sets"
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
+  add_foreign_key "exercises", "workouts"
   add_foreign_key "plans", "users"
   add_foreign_key "workout_sessions", "plans"
   add_foreign_key "workout_sessions", "workouts"

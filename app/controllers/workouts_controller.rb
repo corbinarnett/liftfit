@@ -1,6 +1,7 @@
 class WorkoutsController < ApplicationController
   def new
     @workout = Workout.new
+    5.times { @workout.exercises.build }
   end
 
   def index 
@@ -24,6 +25,6 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(:title, :category)
+    params.require(:workout).permit(:title, :category, exercises_attributes: [:name, :muscle_group, :equipment])
   end
 end
