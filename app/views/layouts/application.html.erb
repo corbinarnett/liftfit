@@ -11,9 +11,13 @@
 
   <body>
   
+      <% if logged_in? %>
       <%= link_to 'Logout', '/logout', method: :delete%>
       <%= link_to 'My Plans', plans_path %>
       <%= link_to 'Create a Plan', new_plan_path %>
+      <%= link_to 'Create a Workout', new_workout_path %>
+      <%= link_to 'My Workouts', workouts_path %>
+      <% end %>
       
   
     <%= yield %>
