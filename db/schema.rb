@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_004322) do
+ActiveRecord::Schema.define(version: 2019_11_07_015052) do
 
   create_table "plans", force: :cascade do |t|
     t.string "title"
@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(version: 2019_11_07_004322) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"
+    t.integer "sets_per_exercise"
+    t.integer "rep_range"
+    t.integer "rest_time_between_sets"
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
