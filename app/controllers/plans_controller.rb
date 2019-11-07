@@ -12,7 +12,7 @@ class PlansController < ApplicationController
   end
 
   def create
-    #  byebug
+     # byebug
     # build compared to new adds the newly created plan to the plans collection
     @plan = current_user.plans.build(plan_params)
     
@@ -38,8 +38,8 @@ class PlansController < ApplicationController
 
   private
 
+# "plan"=>{"title"=>"Test Plan", "description"=>"Awesome Text", "active"=>"1"}
   def plan_params
-    # "plan"=>{"title"=>"Test Plan", "description"=>"Awesome Text", "active"=>"1"}
-    params.permit(plan).require(:title, :description, :active)
+    params.require(:plan).permit(:title, :description, :active)
   end
 end
