@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :exercises
   root "sessions#index"
 
   #creating a new session, model object(user) has already been created
