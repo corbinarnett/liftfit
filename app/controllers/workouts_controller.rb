@@ -5,6 +5,7 @@ class WorkoutsController < ApplicationController
   end
 
   def index 
+    @workouts = Workout.all
   end
 
   def show
@@ -14,6 +15,7 @@ class WorkoutsController < ApplicationController
   def create
     # "workout"=>{"title"=>"Workout A", "category"=>"push"}
     @workout = current_user.created_workouts.build(workout_params)
+    # byebug
     if @workout.save
       redirect_to workout_path(@workout)
     else
