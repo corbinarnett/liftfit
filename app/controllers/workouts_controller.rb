@@ -25,6 +25,7 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(:title, :category, exercises_attributes: [:name, :muscle_group, :equipment])
+    # "workout"=>{"title"=>"Workout B", "category"=>"pull", "exercises_attributes"=>{"0"=>{"name"=>"Pull Ups", "muscle_group"=>"Back", "equipment"=>"Yourself", "sets"=>"3", "weight"=>"0", "reps"=>"8-12"}
+    params.require(:workout).permit(:title, :category, exercises_attributes: [:name, :muscle_group, :equipment, :sets, :weight, :reps])
   end
 end
