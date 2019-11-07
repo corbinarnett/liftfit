@@ -1,2 +1,13 @@
 <h1> <%= @workout.title %> </h1>
 
+<ul>
+<% @workout.exercises.each do |e| %>
+  <fieldset>
+    <legend><strong><%= e.name %></strong></legend>
+    <p>Sets: <%= e.sets %></p
+    <p>Reps: <%= e.reps %></p>
+    <p>Weight: <%= e.weight %> lbs</p>
+  </fieldset>
+  <br>
+  <% end %>
+  </ul>
