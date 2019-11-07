@@ -1,0 +1,16 @@
+<h1>Track a Workout</h1>
+
+<%= form_for @workout_session do |f| %>
+
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+
+  <%= f.label :feeling %>
+  <%= f.text_field :feeling %>
+
+  <%= f.label :plan_id %>
+  <%#  collection_select(method, collection, value_method, text_method) %>
+  <%= f.collection_select :plan_id, Plan.all, :id, :title %>
+    
+<% end %>
+  
