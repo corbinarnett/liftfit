@@ -1,6 +1,6 @@
 <%= form_for @workout do |f| %>
 
- <%= f.label :title %>
+  <%= f.label :title %>
   <%= f.text_field :title %>
     <br></br>
 
@@ -8,8 +8,19 @@
   <%= f.select :category,options_for_select(["chest", "back", "arms", "sholders", "legs", "full body", "upper_body", "push", "pull", "other"]), include_blank: true  %>
     <br></br>
 
-  <h2> Remember to list exercises </h2>
+  <%= f.fields_for :exercises do |exercise_attributes| %>
+    <div>
+    <%= exercise_attributes.label :name %>
+    <%= exercise_attributes.text_field :name %><br>
 
+    <%= exercise_attributes.label :muscle_group %>
+    <%= exercise_attributes.text_field :muscle_group %><br>
+
+    <%= exercise_attributes.label :equipment %>
+    <%= exercise_attributes.text_field :equipment %><br>
+    </div>
+
+  <% end %>
   <%= f.submit%>
 
 <% end %>
