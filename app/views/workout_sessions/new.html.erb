@@ -8,9 +8,22 @@
   <%= f.label :feeling %>
   <%= f.text_field :feeling %>
 
+  <br><br>
+
   <%= f.label :plan_id %>
   <%#  collection_select(method, collection, value_method, text_method) %>
   <%= f.collection_select :plan_id, Plan.all, :id, :title %>
+
+  <br><br>
+
+  <%= f.label :workout_id %>
+  <%= f.collection_select :workout_id, Workout.all, :id, :title %>
+
+  <%= f.fields_for :workout do |workout| %>
     
+
+  <% end %>
+
+  <%= f.submit %>  
 <% end %>
   
