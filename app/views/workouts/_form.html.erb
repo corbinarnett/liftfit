@@ -5,19 +5,32 @@
     <br></br>
 
   <%= f.label :category %>
-  <%= f.select :category,options_for_select(["chest", "back", "arms", "sholders", "legs", "full body", "upper_body", "push", "pull", "other"]), include_blank: true  %>
+  <%= f.select :category,options_for_select(%w[weights cardio HIIT strength bodybuilding endurance aerobic plyometrics cross-training interval resistance]), include_blank: true  %>
     <br></br>
 
   <%= f.fields_for :exercises do |exercise_attributes| %>
     <div>
+    <fieldset>
+    <legend>Exercise</legend>
     <%= exercise_attributes.label :name %>
     <%= exercise_attributes.text_field :name %><br>
-
+    
     <%= exercise_attributes.label :muscle_group %>
-    <%= exercise_attributes.text_field :muscle_group %><br>
+    <%= exercise_attributes.select :muscle_group, options_for_select(%w[abdominals abductors biceps calves chest forearms glutes hamstrings lats lowerback middleback neck quadriceps shoulder traps triceps]), include_blank: true %><br>
 
     <%= exercise_attributes.label :equipment %>
     <%= exercise_attributes.text_field :equipment %><br>
+
+    <%= exercise_attributes.label :sets %>
+    <%= exercise_attributes.number_field :sets, min: 1 %><br>
+
+    <%= exercise_attributes.label :weight %>
+    <%= exercise_attributes.number_field :weight, min: 0 %><br>
+
+    <%= exercise_attributes.label :reps %>
+    <%= exercise_attributes.text_field :reps %>
+    </fieldset>
+    <br><br>
     </div>
 
   <% end %>
